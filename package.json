@@ -1,0 +1,16 @@
+{
+  "title": "MCR",
+  "name": "mcrfirefox",
+  "version": "0.1.0",
+  "description": "MCR specific features for MCR consoles.",
+  "main": "index.js",
+  "author": "Beau Harrison <beau@fnal.gov>",
+  "engines": {
+    "firefox": ">=38.0a1",
+    "fennec": ">=38.0a1"
+  },
+  "license": "None",
+  "keywords": [
+    "jetpack"
+  ]
+}
