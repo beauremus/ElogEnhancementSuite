@@ -1,5 +1,5 @@
 self.port.on("replacePage", function() {
-    var chxBoxDiv = document.querySelector('.tags').parent,
+    var chxBoxDiv = document.querySelector('.tags').parentNode,
         isEntry = window.location.pathname === '/Elog/add/entry',
         isComment = window.location.pathname === '/Elog/add/comment';
 
