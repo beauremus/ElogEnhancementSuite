@@ -1,6 +1,44 @@
 /* These are valid enclosures */
-const LOGS = ['Booster','Linac','Main Injector','Muon','Recycler'];
-const CATS = ['8 GeV line','BNB','Meson Center','Meson Test','MTA','Neutrino Muon','NuMI','Switchyard'];
+const LOGS = [
+    'Booster',
+    'Linac',
+    'Main Injector',
+    'Muon',
+    'Recycler'
+];
+
+const CATS = [
+    '8 GeV line',
+    'BNB',
+    'Meson Center',
+    'Meson Test',
+    'MTA',
+    'Neutrino Muon',
+    'NuMI',
+    'Switchyard'
+];
+
+const STATUS_ID = {
+    'CtrlAccess': 3,
+    'SuperAccess': 4,
+    'NoAccess': 5
+};
+
+const ENC_ID = {
+    '8 GeV line': [4],
+    'Booster': [3],
+    'BNB': [6],
+    'Linac': [1],
+    'Main Injector': [8],
+    'Meson Center': [31],
+    'Meson Test': [28, 29],
+    'MTA': [2],
+    'Muon': [17],
+    'Neutrino Muon': [37],
+    'NuMI': [9],
+    'Recycler': [8],
+    'Switchyard': [20]
+};
 
 if (document.location.pathname === "/Elog/add/entry") {
     document.body.style.background = "blue";
@@ -80,10 +118,24 @@ function listen() {
         }
 
         if (selectedEncs.length > 0) { // Validate enclosures selected
-            // TODO: Call enclsoure status updater method
             console.log(`${selectedEncs} enclosures are selected.`);
 
             console.log(`${accessValue} access type is selected.`);
+
+            for (enclosure of selectedEncs) {
+                updateStatus(enclosure, accessValue);
+            }
         }
     }
+}
+
+function updateStatus(enclosureName,statusName) {
+    let enclosureID = ENC_ID[enclosureName],
+        statusID = STATUS_ID[statusName];
+
+    let url = `https://www-bd.fnal.gov/EnclosureStatus/addEntry?enclosureID=${enclosureID}&statusID=${statusID}`;
+
+    fetch(url,{method: 'POST'})
+        .then((value) => {console.log(value);console.log(`Successfully changed ${enclosureName} to ${statusName}`);})
+        .catch((err) => {console.log(err);alert("ERROR");});
 }
