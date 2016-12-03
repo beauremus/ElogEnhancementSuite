@@ -1,0 +1,16 @@
+html, body {
+  width: 250px;
+}
+
+.colored {
+  margin: 3% auto;
+  padding: 4px;
+  text-align: center;
+  font-size: 1.5em;
+  background-color: #E5F2F2;
+  cursor: pointer;
+}
+
+.colored:hover {
+  background-color: #CFF2F2;
+}

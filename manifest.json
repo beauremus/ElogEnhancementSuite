@@ -1,0 +1,38 @@
+{
+
+  "manifest_version": 2,
+  "name": "Elog Enhancement Suite",
+  "version": "0.1",
+
+  "description": "Modifies the Fermi Elog with selected user features.",
+
+  "icons": {
+    "64": "icons/fnalLogo.ico"
+  },
+
+  "permissions": [
+    "activeTab",
+    "storage"
+  ],
+
+  "browser_action": {
+    "default_icon": "icons/fnalLogo.ico",
+    "default_title": "EES",
+    "default_popup": "popup/settings.html"
+  },
+
+  "content_scripts": [{
+    "matches": ["https://www-bd.fnal.gov/Elog/*"],
+    "js": ["content_scripts/encstat.js"]
+  }],
+
+  "applications": {
+    "gecko": {
+      "id": "ees@www-bd.fnal.gov",
+      "strict_min_version": "42.0",
+      "strict_max_version": "50.*",
+      "update_url": "https://www-bd.fanl.gov/ops/beau/ees/updates.json"
+    }
+  }
+
+}
