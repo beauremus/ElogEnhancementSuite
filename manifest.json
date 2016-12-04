@@ -21,11 +21,6 @@
     "default_popup": "popup/settings.html"
   },
 
-  "content_scripts": [{
-    "matches": ["https://www-bd.fnal.gov/Elog/*"],
-    "js": ["content_scripts/encstat.js"]
-  }],
-
   "applications": {
     "gecko": {
       "id": "ees@www-bd.fnal.gov",

@@ -139,3 +139,8 @@ function updateStatus(enclosureName,statusName) {
         .then((value) => {console.log(value);console.log(`Successfully changed ${enclosureName} to ${statusName}`);})
         .catch((err) => {console.log(err);alert("ERROR");});
 }
+
+/* generic error handler */
+function onError(error) {
+    console.log(error);
+}
