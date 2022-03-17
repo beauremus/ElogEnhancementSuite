@@ -1,5 +1,5 @@
 /* These are valid enclosures */
-const LOGS = [
+const ELOG_LOGS = [
     'Booster',
     'Linac',
     'Main Injector',
@@ -7,7 +7,7 @@ const LOGS = [
     'Recycler'
 ];
 
-const CATS = [
+const ELOG_CATS = [
     '8 GeV line',
     'BNB',
     'Meson Center',
@@ -95,22 +95,22 @@ function listen() {
 
     if (access) { // Validate access type is selected
         let accessValue = access.value,
-            logs = document.querySelectorAll('.logs ul li span.item'),
-            cats = document.querySelectorAll('.categories ul li span.item'),
+            logsList = document.querySelectorAll('.logs ul li span.item'),
+            catsList = document.querySelectorAll('.categories ul li span.item'),
             selectedEncs = [];
 
-        for (log of logs) {
+        for (log of logsList) {
             let logText = log.textContent;
 
-            if (LOGS.includes(logText)) {
+            if (ELOG_LOGS.includes(logText)) {
                 selectedEncs.push(logText);
             }
 
             if (logText === 'External Beamlines') {
-                for (cat of cats) {
+                for (cat of catsList) {
                     let catText = cat.textContent;
 
-                    if (CATS.includes(catText)) {
+                    if (ELOG_CATS.includes(catText)) {
                         selectedEncs.push(catText);
                     }
                 }
@@ -138,9 +138,4 @@ function updateStatus(enclosureName,statusName) {
     fetch(url,{method: 'POST'})
         .then((value) => {console.log(value);console.log(`Successfully changed ${enclosureName} to ${statusName}`);})
         .catch((err) => {console.log(err);alert("ERROR");});
-}
-
-/* generic error handler */
-function onError(error) {
-    console.log(error);
 }
